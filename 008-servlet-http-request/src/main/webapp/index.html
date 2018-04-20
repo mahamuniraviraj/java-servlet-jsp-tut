@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reva On Java</title>
+</head>
+<body>
+	<h1> Web app started successfully</h1>
+	
+	<h1> GET Form :: S1</h1>
+	<form method="get" action="s1" enctype="application/x-www-form-urlencoded" >
+	
+		a: <input type="text" name="a"/><br/>
+		b: <input type="password" name="b"/> 
+		<input type="submit" value="submit">
+	</form>
+	
+	<hr>
+	
+	<h1> POST Form :: s1</h1>
+	
+	<form method="post" action="s1" enctype="application/x-www-form-urlencoded" >
+	
+		a: <input type="text" name="a"/><br/>
+		b: <input type="password" name="b"/> 
+		<input type="submit" value="submit">
+	
+	</form>
+	
+	
+	<hr>
+	
+	<h1> GET Form with Query param ::S2</h1>
+	
+	
+	<form method="get" action="s2?a=1&b=true&c='Hello There'" enctype="application/x-www-form-urlencoded" >
+	
+		d: <input type="text" name="d"/><br/>
+		e: <input type="password" name="e"/> 
+		<input type="submit" value="submit">
+		<hr>
+	</form>
+	
+		
+	
+	<h1>POST Form with Query param  ::S2</h1>
+	
+	
+	<form method="post" action="s2?a=1&b=true&c='Hello There'" enctype="application/x-www-form-urlencoded" >
+	
+		d: <input type="text" name="d"/><br/>
+		e: <input type="text" name="e"/> 
+		<input type="submit" value="submit">
+	</form>
+
+
+	<hr>
+	
+	
+		<h1> POST Form with Query param ::S3 ServletInputStream  </h1>
+	
+	
+	<form method="post" action="s3?a=1&b=true&c='Hello There'" enctype="application/x-www-form-urlencoded" >
+	
+		d: <input type="text" name="d"/><br/>
+		e: <input type="password" name="e"/> 
+		<input type="submit" value="submit">
+		<hr>
+	</form>
+	
+		
+	
+	<h1>POST Form with Query param  ::S4 BufferedReader</h1>
+	
+	
+	<form method="post" action="s4?a=1&b=true&c='Hello There'" enctype="application/x-www-form-urlencoded" >
+	
+		d: <input type="text" name="d"/><br/>
+		e: <input type="text" name="e"/> 
+		<input type="submit" value="submit">
+	</form>
+	
+	
+	
+	
+</body>
+</html>
