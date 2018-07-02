@@ -48,6 +48,7 @@ public class MyFourthServlet extends HttpServlet {
 		resp.setHeader("Content-Type", "text/html");
 
 		resp.sendRedirect("https://www.google.com");
+
 	}
 
 }
