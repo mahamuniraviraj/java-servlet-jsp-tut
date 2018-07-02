@@ -23,7 +23,9 @@
 package com.reva.sample.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,8 +38,18 @@ import javax.servlet.http.HttpServletResponse;
  * @since  1.0
  */
 @SuppressWarnings("serial")
-@WebServlet(name = "My First Servlet", urlPatterns = "/s1")
-public class MyFirstServlet extends HttpServlet {
+@WebServlet(name = "My Second Servlet", urlPatterns = { "/hello", "/s2", "/servlet2" })
+public class MySecondServlet extends HttpServlet {
+
+	/* (non-Javadoc)
+	 * @see javax.servlet.GenericServlet#init(javax.servlet.ServletConfig)
+	 */
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+
+		super.init(config);
+
+	}
 
 	/* (non-Javadoc)
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -45,10 +57,24 @@ public class MyFirstServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		/*
-		 * Refer to <h1> GET Form :: S1</h1> on index page
-		 * */
-		MyUtils.genOutput(req, resp);
+		// Get PrintWriter from response object
+
+		PrintWriter writer = resp.getWriter();
+
+		// This time we send valid html document
+		resp.setHeader("Content-Type", "text/html");
+
+		// writer.write(" ");
+
+		writer.write("<html>                                           ");
+		writer.write("<head>                                           ");
+		writer.write("	<title> Reva on Java</title>                   ");
+		writer.write("</head>                                          ");
+		writer.write("<body>                                           ");
+		writer.write("	<h1> This is a valid html response</h1>        ");
+		writer.write("	<h3 style='color:blue'>I am cool blue</h3>     ");
+		writer.write("</body>                                          ");
+		writer.write("</html>                                          ");
 
 	}
 
@@ -58,10 +84,6 @@ public class MyFirstServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		/*
-		 * Refer to <h1> POST Form :: s1</h1> index page
-		 * */
-		MyUtils.genOutput(req, resp);
 	}
 
 }

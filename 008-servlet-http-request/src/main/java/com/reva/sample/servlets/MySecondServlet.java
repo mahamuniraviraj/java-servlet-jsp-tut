@@ -56,6 +56,8 @@ public class MySecondServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		/*
+		 * Refer to GET Form with Query param ::S2 */
 		MyUtils.genOutput(req, resp);
 
 	}
@@ -65,6 +67,10 @@ public class MySecondServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		/*
+		 *
+		POST Form with Query param  ::S2 */
+
 		MyUtils.genOutput(req, resp);
 	}
 

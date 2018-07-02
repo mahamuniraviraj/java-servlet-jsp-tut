@@ -35,6 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Read request using byte input stream and then convert to text
  * @author raviraj
  * @date   Mar 9, 2018
  * @since  1.0
@@ -49,6 +50,9 @@ public class MyThirdServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		/*
+		 * Refer to POST Form with Query param ::S3 ServletInputStream on index page
+		 * */
 		String op = null;
 		ServletInputStream inputStream = req.getInputStream();
 

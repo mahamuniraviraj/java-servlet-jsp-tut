@@ -22,11 +22,11 @@
  */
 package com.reva.sample.servlets;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,42 +38,38 @@ import javax.servlet.http.HttpServletResponse;
  * @since  1.0
  */
 @SuppressWarnings("serial")
-@WebServlet(name = "My Fourth Servlet", urlPatterns = "/s4")
-public class MyFourthServlet extends HttpServlet {
+@WebServlet(name = "MyThirdServlet", urlPatterns = "/s3")
+public class MyThirdServlet extends HttpServlet {
 
 	/* (non-Javadoc)
 	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		/*
-		 * Refer to POST Form with Query param  ::S4 BufferedReader on index page
-		 */
-		StringBuilder op = new StringBuilder();
-		BufferedReader inputStream = req.getReader();
-
-		String contentLine = inputStream.readLine();
-		while (contentLine != null) {
-			op.append(contentLine);
-			contentLine = inputStream.readLine();
-
-		}
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		resp.setHeader("Content-Type", "text/html");
 
-		PrintWriter pw = resp.getWriter();
+		ServletOutputStream stream = resp.getOutputStream();
 
-		pw.append("<hr/>");
+		// sending response as binary data : This just illustration of using
+		// ServletOutputStream
+		StringBuilder stringBuilder = new StringBuilder(250);
+		stringBuilder.append("<html>                                           ");
+		stringBuilder.append("<head>                                           ");
+		stringBuilder.append("	<title> Reva on Java</title>                   ");
+		stringBuilder.append("</head>                                          ");
+		stringBuilder.append("<body>                                           ");
+		stringBuilder.append("	<h1> This is a valid html response</h1>        ");
+		stringBuilder.append("	<h3 style='color:red'>I am fiery Red</h3>     ");
+		stringBuilder.append("</body>                                          ");
+		stringBuilder.append("</html>                                          ");
 
-		pw.append("<h2> Read Request using <Strong>BufferedReader</strong></h2>");
-		pw.append("<p> " + op.toString() + " </p>");
+		String outputString = stringBuilder.toString();
 
-		pw.append("<hr/>");
+		byte[] data = outputString.getBytes(StandardCharsets.UTF_8);
+		stream.write(data);
 
-		MyUtils.sendReqInfo(req, pw);
-
-		pw.append("<h3><a href='index.html'> Home </a></h3>");
+		stream.flush();
 	}
 
 }

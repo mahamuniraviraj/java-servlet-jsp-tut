@@ -36,32 +36,18 @@ import javax.servlet.http.HttpServletResponse;
  * @since  1.0
  */
 @SuppressWarnings("serial")
-@WebServlet(name = "My First Servlet", urlPatterns = "/s1")
-public class MyFirstServlet extends HttpServlet {
-
-	/* (non-Javadoc)
-	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		/*
-		 * Refer to <h1> GET Form :: S1</h1> on index page
-		 * */
-		MyUtils.genOutput(req, resp);
-
-	}
+@WebServlet(name = "MyThirdServlet", urlPatterns = "/s4")
+public class MyFourthServlet extends HttpServlet {
 
 	/* (non-Javadoc)
 	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		/*
-		 * Refer to <h1> POST Form :: s1</h1> index page
-		 * */
-		MyUtils.genOutput(req, resp);
+		resp.setHeader("Content-Type", "text/html");
+
+		resp.sendRedirect("https://www.google.com");
 	}
 
 }

@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Utility Class to generate the sample output response about the servlet request.
  * @author raviraj
  * @date   Apr 21, 2018
  * @since  1.0

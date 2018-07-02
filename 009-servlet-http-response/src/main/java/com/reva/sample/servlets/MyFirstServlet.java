@@ -23,6 +23,7 @@
 package com.reva.sample.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,10 +46,11 @@ public class MyFirstServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		/*
-		 * Refer to <h1> GET Form :: S1</h1> on index page
-		 * */
-		MyUtils.genOutput(req, resp);
+		// Get PrintWriter from response object
+
+		PrintWriter writer = resp.getWriter();
+
+		writer.write("hello from java");
 
 	}
 
@@ -58,10 +60,7 @@ public class MyFirstServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		/*
-		 * Refer to <h1> POST Form :: s1</h1> index page
-		 * */
-		MyUtils.genOutput(req, resp);
+		this.doGet(req, resp);
 	}
 
 }
